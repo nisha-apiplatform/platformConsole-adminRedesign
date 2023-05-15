@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { PlatformConsoleConfigurationComponent } from '../platform-console-configuration/platform-console-configuration.component';
 import { SelectionModel } from '@angular/cdk/collections';
 
 export interface PlatformData {
@@ -38,6 +40,186 @@ export class PlatformConsoleComponent {
       regions: [],
       status: 'default',
     },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
+    {
+      default: false,
+      name: 'New Item',
+      url: 'xx',
+      cloud: 'default',
+      primaryRegion: 'default',
+      regions: [],
+      status: 'default',
+    },
   ];
 
   dataSource = new MatTableDataSource<PlatformData>(this.data);
@@ -52,32 +234,10 @@ export class PlatformConsoleComponent {
   regionsControl = new FormControl<string[]>([]);
   regionsList: string[] = ['region1', 'region2', 'region3'];
 
-  onRegionRemoval(region: string, index: number) {
+  onRegionRemoval(index: number) {
     const regions = this.regionsControl.value as string[];
     regions.splice(index, 1);
     this.regionsControl.setValue(regions); // To trigger change detection
-  }
-
-  private removeFirst<T>(array: T[], toRemove: T): void {
-    const index = array.indexOf(toRemove);
-    if (index !== -1) {
-      array.splice(index, 1);
-    }
-  }
-
-  addRow() {
-    const newItem: PlatformData = {
-      default: false,
-      name: 'New Item',
-      url: 'xx',
-      cloud: 'default',
-      primaryRegion: 'default',
-      regions: [],
-      status: 'default',
-    };
-    this.data.push(newItem);
-    this.dataSource.data = this.data;
-    this.setDefaults();
   }
 
   editRow(element: PlatformData) {
@@ -92,6 +252,21 @@ export class PlatformConsoleComponent {
         this.dataSource.data
       );
     }
+  }
+
+  constructor(public dialog: MatDialog) {}
+
+  addRow(result: PlatformData): void {
+    this.data.push(result);
+    this.dataSource.data = this.data;
+  }
+  addRowDialog(): void {
+    const dialogRef = this.dialog.open(PlatformConsoleConfigurationComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.addRow(result);
+      }
+    });
   }
 
   displayedColumns: string[] = [

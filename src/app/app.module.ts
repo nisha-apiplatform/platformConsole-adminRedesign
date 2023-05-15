@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field'; // import MatFormFieldModule instead of MatFormField
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -18,10 +19,16 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { PlatformConsoleComponent } from './platform-console/platform-console.component';
+import { PlatformConsoleConfigurationComponent } from './platform-console-configuration/platform-console-configuration.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
-  declarations: [AppComponent, PlatformConsoleComponent],
+  declarations: [
+    AppComponent,
+    PlatformConsoleComponent,
+    PlatformConsoleConfigurationComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -40,6 +47,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     ReactiveFormsModule,
     MatChipsModule,
+    MatDialogModule,
+    ScrollingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
